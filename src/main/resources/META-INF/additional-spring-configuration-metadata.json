@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "name": "spring.security.jwt",
+      "type": "com.hightech.university.config.JwtService",
+      "description": "Root configuration for JSON Web Token settings."
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.security.jwt.secret",
+      "type": "java.lang.String",
+      "description": "Secret key used for signing the tokens (HMAC-SHA)."
+    },
+    {
+      "name": "spring.security.jwt.expiration-ms",
+      "type": "java.lang.Long",
+      "description": "Token validity duration in milliseconds.",
+      "defaultValue": 3600000
+    },
+    {
+      "name": "spring.security.jwt.issuer",
+      "type": "java.lang.String",
+      "description": "Token issuer identity (iss)."
+    }
+  ],
+  "hints": [
+    {
+      "name": "spring.security.jwt.issuer",
+      "values": [
+        {
+          "value": "auth-service",
+          "description": "Centralized authentication service."
+        }
+      ]
+    }
+  ]
+}

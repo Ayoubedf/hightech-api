@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: university
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  security:
+    jwt:
+      secret: ${SECRET_KEY}
+      expiration-ms: 86_400_000
+      issuer: auth-service
