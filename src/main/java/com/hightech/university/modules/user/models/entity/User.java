@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+@NullMarked
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,9 +27,9 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String first_name;
+    private String firstName;
 
-    private String last_name;
+    private String lastName;
 
     @Column(unique = true, nullable = false)
     private String email;
