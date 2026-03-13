@@ -1,5 +1,7 @@
 package com.hightech.university.modules.auth.controller;
 
+import com.hightech.university.modules.auth.models.dto.AuthenticationRequest;
+import com.hightech.university.modules.auth.models.dto.AuthenticationResponse;
 import com.hightech.university.modules.auth.models.dto.RegisterRequest;
 import com.hightech.university.modules.auth.service.AuthenticationService;
 import com.hightech.university.modules.user.models.dto.UserDto;
@@ -24,6 +26,11 @@ public class AuthenticationController {
         var response = authenticationService.register(request);
         var uri = uriBuilder.path("/users/{id}").buildAndExpand(response.getId()).toUri();
         return ResponseEntity.created(uri).body(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request) {
+        return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 
 }
